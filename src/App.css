@@ -1,0 +1,19 @@
+*, *::before, *::after {box-sizing: inherit;}
+
+html,body{
+  box-sizing: border-box;
+
+}
+
+.header{
+  display: inline;
+  margin: 50px;
+}
+
+.todoHeading {
+  text-align: center;
+}
+
+.addTodoBtn{
+
+}
