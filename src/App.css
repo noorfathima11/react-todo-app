@@ -6,7 +6,7 @@ html,body{
 }
 
 .header{
-  display: inline;
+  display: flex;
   margin: 50px;
 }
 
@@ -14,6 +14,18 @@ html,body{
   text-align: center;
 }
 
-.addTodoBtn{
+/* .addTodoBtn{
+  vertical-align: bottom;
+} */
 
+.checkbox label {
+  display: inline-block;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.checkbox input {
+  vertical-align: middle;
+}
+.checkbox label span {
+  vertical-align: middle;
 }
