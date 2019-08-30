@@ -3,20 +3,28 @@ import './App.css'
 
 class TaskInput extends React.Component{
 
+  constructor(){
+    super()
+    this.state = {value: ''}
+
+  }
+
+  onValueEnterHandle = (event) => {
+    this.setState({value: event.target.value})
+  }
+
   render(){
     return(
       <div className="taskInputDiv">
-        <input
-          type="text"
-          placeholder="Name this task..."
-          ref = {(input) =>{
-            this.taskName = input
-            console.log('taskName', this.taskName, this.taskName.value)
-            }
-          }></input>
-        <p>{this.taskName}</p>
-        <button onClick={this.props.add.bind(null, true)}>Add</button>
-        <button onClick={this.props.cancel.bind(null, false, this.taskName.value)}>Cancel</button>
+        <form>
+          <input
+           type="text"
+           placeholder="Name this task..."
+           onChange={this.onValueEnterHandle}></input>
+          <input type="button" value="Add" onClick={() => {this.props.add(true, this.state.value)}}/>
+          <input type="button" value="Cancel" onClick={this.props.cancel.bind(null, false)}/>
+        </form>
+        {/*<button onClick={this.props.add.bind(this, true, this.valueEntered)}>Add</button>*/}
       </div>
     )
   }

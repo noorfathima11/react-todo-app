@@ -6,10 +6,12 @@ class TaskCard extends React.Component{
     return (
       <div className="taskCardDiv">
       <div className="checkbox">
-        <label for="check">
-          <input type="checkbox" id="check"/>
-          <span>Task will come here</span>
-        </label>
+        <form>
+          <label for="check">
+           <input type="checkbox" id="check"/>
+           <span>Task will come here</span>
+          </label>
+        </form>
       </div>
       <div>Note will come here</div>
       <button>Edit</button>

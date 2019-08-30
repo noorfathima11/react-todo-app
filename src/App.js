@@ -32,7 +32,7 @@ class App extends React.Component{
       }
       this.setState((prevState) => {
         return {
-          items: prevState.items.concat(newTaskItem)
+          items: prevState.taskItems.concat(newTaskItem)
         }
       })
     }
