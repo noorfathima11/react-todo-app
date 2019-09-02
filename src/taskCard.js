@@ -1,62 +1,74 @@
 import React from 'react'
 import './App.css'
+import EditTask from './editTask'
 
 class TaskCard extends React.Component{
 
   constructor(props){
     super(props)
-    this.isEditing = false
-    this.textInput = null
-    this.textArea = null
-    this.spanElement = element => {
-      this.textInput = element
-    }
-    this.textElement = element => {
-      this.textArea = element
+    this.state = {
+      isEditing : false
     }
   }
 
-  edit = (e) =>{
-    e.preventDefault()
-    let oldValue = this.textInput.innerHTML
-    this.textInput.classList.add('isHidden')
-    this.textArea.value = oldValue
-    this.textInput.classList.remove('isHidden')
-    this.textInput.classList.add('isVisible')
-    //this.textArea.style.display = "inline-block"
-    this.props.editTask(!this.isEditing)
+  edit = () => {
+    console.log(!this.state.isEditing)
+    this.setState ({
+      isEditing : !this.state.isEditing
+    })
   }
 
-  finishEdit(e){
-    //e.preventDefault()
-    let event = e
-    console.log('code', e.keyCode)
-    if(e.keyCode === 13){
-      let newValue = this.textArea.value
-      console.log('newValue', newValue)
-      this.textInput.value = newValue
-      this.textArea.style.display = "none"
-      this.textInput.style.display = "inline-block"
-      this.props.editTask(!this.isEditing)
-    }
+  finishEdit(){
+      this.props.editTask(!this.state.isEditing)
   }
 
 
   createTaskList = (listItem) => {
-      return (
-        <li key={listItem.key}>
-          <form>
-            <label>
-              <input type="checkbox" onChange={this.props.checkToggle.bind(this, listItem.key)}/>
-              <span  ref={this.spanElement} className="spanElement">{listItem.text}</span>
-              <input ref={this.textElement} type="textarea" className="isHidden" onKeyDown={this.finishEdit.bind(this)}/>
-            </label>
-            <div>Extra details will come here</div>
-            <button onClick={this.edit}>Edit</button>
-            <button onClick={this.props.delete.bind(this, listItem.key)}>Delete</button>
-          </form>
-        </li>
-      )
+    return (
+      <li key={listItem.key}>
+        <form>
+          <label>
+            <input type="checkbox" onChange={this.props.checkToggle.bind(listItem.key)}/>
+            {/*<TaskCard taskName={listItem.text}/>*/}
+            {/*<span className="spanElement">{listItem.text}</span>*/}
+            <EditTask taskName={listItem.text}/>
+          </label>
+          <div>Extra details will come here</div>
+          <button onClick={() => this.edit()}>Edit</button>
+          <button onClick={this.props.delete.bind(this, listItem.key)}>Delete</button>
+        </form>
+      </li>
+    )
+    // console.log('isEditing', this.state.isEditing)
+    // if(!this.state.isEditing){
+    //   return (
+    //     <li key={listItem.key}>
+    //       <form>
+    //         <label>
+    //           <input type="checkbox" onChange={this.props.checkToggle.bind(listItem.key)}/>
+    //           <span className="spanElement">{listItem.text}</span>
+    //         </label>
+    //         <div>Extra details will come here</div>
+    //         <button onClick={() => this.edit()}>Edit</button>
+    //         <button onClick={this.props.delete.bind(this, listItem.key)}>Delete</button>
+    //       </form>
+    //     </li>
+    //   )
+    // }else {
+    //   return (
+    //     <li key={listItem.key}>
+    //       <form>
+    //         <label>
+    //           <input type="checkbox" onChange={this.props.checkToggle.bind(listItem.key)}/>
+    //           <input type="textarea"/>
+    //         </label>
+    //         <div>Extra details will come here</div>
+    //         <button onClick={() => this.edit()}>Done</button>
+    //         <button onClick={this.props.delete.bind(this, listItem.key)}>Delete</button>
+    //       </form>
+    //     </li>
+    //   )
+    // }
   }
 
   render(){
