@@ -2,21 +2,66 @@
 
 html,body{
   box-sizing: border-box;
-
 }
 
-.header{
+.header {
+  display: flex;
+  margin: 20px;
+  background: whitesmoke;
+}
+
+.header h1{
+  margin : auto;
+}
+
+.todoListMain .header input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #FFF;
+  width: 165px;
+}
+
+.todoListMain .header button {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  margin-right: 0px;
+  background-color: #0066FF;
+  color: #FFF;
+  border: 2px solid #0066FF;
+}
+
+.todoListMain .theList {
+  list-style: none;
+  padding-left: 0;
+  width: 250px;
+}
+
+li {
+  color: #333;
+  background-color: powderblue;
+  padding: 15px;
+  margin : 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  list-style: none;
+  display: list-item;
+}
+
+.theList {
+  margin: 15px;
+  padding: 0;
+}
+
+.lists {
+  display: grid;
+}
+
+.taskInputDiv {
   display: flex;
   margin: 50px;
+  background: whitesmoke;
 }
-
-.todoHeading {
-  text-align: center;
-}
-
-/* .addTodoBtn{
-  vertical-align: bottom;
-} */
 
 .checkbox label {
   display: inline-block;
@@ -29,3 +74,23 @@ html,body{
 .checkbox label span {
   vertical-align: middle;
 }
+
+.taskCardsDiv{
+  display: flex;
+  margin: 20px;
+  border: 2px;
+}
+
+.headerForm{
+  margin: 15px;
+}
+
+.isHidden {
+  display: none;
+}
+
+.isVisible {
+  display: inline-block;
+}
+
+
