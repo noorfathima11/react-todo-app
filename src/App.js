@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import TaskInput from './taskInput'
-import TaskCard from './taskCard'
+import TaskCardList from './taskCardList'
 
 class App extends React.Component{
 
@@ -10,11 +10,11 @@ class App extends React.Component{
     this.state = {
       taskItems : [],
       displayTaskInput : false,
-      displayTaskCard : false,
+      displayTaskCardList : false,
       isEditing: false
     }
     this.displayTaskInput = this.displayTaskInput.bind(this)
-    this.displayTaskCard = this.displayTaskCard.bind(this)
+    this.displayTaskCardList = this.displayTaskCardList.bind(this)
     this.deleteTaskItem = this.deleteTaskItem.bind(this)
     this.checkToggleHandler = this.checkToggleHandler.bind(this)
     this.editTaskHandler = this.editTaskHandler.bind(this)
@@ -27,7 +27,7 @@ class App extends React.Component{
     })
   }
 
-  displayTaskCard = (bool, taskName) => {
+  displayTaskCardList = (bool, taskName) => {
     //console.log(this.state.displayTaskCard)
     console.log('Add card clicked', taskName)
     if(taskName !== ""){
@@ -44,7 +44,7 @@ class App extends React.Component{
       })
     }
     this.setState({
-      displayTaskCard : bool
+      displayTaskCardList : bool
     })
   }
 
@@ -89,9 +89,9 @@ class App extends React.Component{
           <h1 className="todoHeading"> To-dos</h1>
         </div>
          {this.state.displayTaskInput && (<TaskInput cancel={this.displayTaskInput}
-                                                     add={this.displayTaskCard}/>)}
+                                                     add={this.displayTaskCardList}/>)}
 
-         {this.state.displayTaskCard && (<TaskCard taskEntries={this.state.taskItems}
+         {this.state.displayTaskCardList && (<TaskCardList taskEntries={this.state.taskItems}
                                                    delete={this.deleteTaskItem}
                                                    checkToggle={this.checkToggleHandler}
                                                    editTask={this.editTaskHandler}/>)}
